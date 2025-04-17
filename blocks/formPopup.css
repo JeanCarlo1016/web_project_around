@@ -1,0 +1,73 @@
+.open__popup {
+  display: none;
+  width: 880px;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  align-content: center;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup__button-cancel {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0);
+  width: 40px;
+  height: 40px;
+  right: 23%;
+  top: 20%;
+  border: none;
+}
+
+.form__container {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  margin: auto;
+  width: 430px;
+  height: 330px;
+  background-color: white;
+  color: black;
+  border-radius: 4%;
+}
+
+.form__content {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  margin: 34px;
+  font-family: "Inter-Regular";
+  font-size: 14px;
+  color: #c4c4c4;
+}
+
+.form__title {
+  margin: 0;
+  font-size: 24px;
+  font-family: "Inter-Black";
+  color: black;
+}
+
+.form__name {
+  border-bottom: solid;
+  border-width: thin;
+  margin: 44px 0 30px;
+  height: 28px;
+}
+
+.form__about {
+  border-bottom: solid;
+  border-width: thin;
+  margin: 0;
+  height: 28px;
+}
+
+.form__button-save {
+  background-color: white;
+  height: 50px;
+  color: #c4c4c4;
+  border: solid #c4c4c4;
+  border-width: thin;
+}

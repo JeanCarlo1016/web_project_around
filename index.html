@@ -13,6 +13,21 @@
 
 <body class="body">
   <div class="page">
+    <div class="popup open__popup">
+      <button class="popup popup__button-cancel">
+        <img src="./images/closeButton.png" alt="Cerrar el formulario">
+      </button>
+      <form action="" class="form__container">
+        <fieldset class="form__content">
+          <h1 class="form__content form__title">Editar perfil</h1>
+          <input class="form__content form__name" type="text" placeholder="Nombre" name="name" required>
+          <input class="form__content form__about" type="text" placeholder="Acerca de mí" name="about" required>
+        </fieldset>
+        <fieldset class="form__content">
+          <button type="submit" class="form__popup form__button-save">Guardar</button>
+        </fieldset>
+      </form>
+    </div>
     <header class="header">
       <img class="header__logo" src="./images/homeLogo.png" alt="Logo de la Pagina">
     </header>

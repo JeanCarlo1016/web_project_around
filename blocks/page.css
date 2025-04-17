@@ -11,4 +11,5 @@ ul {
   width: 100%;
   font-family: "Inter-Medium";
   margin: auto;
+  z-index: 1;
 }
