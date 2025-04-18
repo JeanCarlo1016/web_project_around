@@ -1,6 +1,25 @@
 .header {
+  max-width: 880px;
   margin-top: 45px;
   height: 74px;
   border-bottom: solid #545454;
   border-bottom-width: thin;
+}
+
+.header__logo {
+  width: 173px;
+  height: 33px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+  .header {
+    width: 100%;
+  }
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .header {
+    width: 100%;
+  }
 }
