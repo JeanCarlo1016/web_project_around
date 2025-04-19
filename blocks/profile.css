@@ -69,7 +69,7 @@
   font-family: 'Inter-Regular';
 }
 
-.content__edit_button {
+.content__info_edit_button {
   grid-column: 7;
   width: 24px;
   height: 24px;
@@ -83,7 +83,7 @@
   border-width: thin;
 }
 
-.content__edit_button:hover {
+.content__info_edit_button:hover {
   border-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -120,7 +120,7 @@
     font-size: 25px;
   }
 
-  .content__edit_button {
+  .content__info_edit_button {
     align-self: center;
   }
 }
@@ -162,7 +162,7 @@
     font-size: 15px;
   }
 
-  .content__edit_button {
+  .content__info_edit_button {
     align-self: center;
   }
 }
