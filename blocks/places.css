@@ -1,0 +1,77 @@
+.places {
+  max-width: 880px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 17px;
+}
+
+.places__card {
+  display: flex;
+  flex-direction: column;
+  height: 361px;
+  width: 282px;
+  background-color: white;
+  color: black;
+  border-radius: 3%;
+}
+
+.places__image {
+  height: 282px;
+  width: 282px;
+  padding-bottom: 25px;
+}
+
+.places__content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.places__text {
+  font-size: 24px;
+  font-family: "Inter-Black";
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.places__button {
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  padding: 0;
+  border: none;
+}
+
+.places__button_like {
+  height: 19px;
+  align-self: center;
+  cursor: pointer;
+}
+
+.places__button_like:hover {
+  opacity: 0.5;
+}
+
+.places__button:checked {
+  background-color: black;
+}
+
+
+.button__image {
+  width: 100%;
+  height: 20px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+  .places {
+    max-width: 768px;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .places {
+    width: 100%;
+    justify-content: center;
+  }
+}
