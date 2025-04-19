@@ -52,7 +52,7 @@
   max-width: 415px;
 }
 
-.content__title {
+.profile__name {
   grid-column: 1 / 7;
   margin: 0;
   font-size: 40px;
@@ -60,7 +60,7 @@
   padding-top: 22px;
 }
 
-.content__subtitle {
+.profile__about {
   grid-column: 1 / 5;
   grid-row: 2;
   margin: 0;
@@ -116,7 +116,7 @@
     width: 80%;
   }
 
-  .content__title {
+  .profile__name {
     font-size: 25px;
   }
 
@@ -154,11 +154,11 @@
     width: 90%;
   }
 
-  .content__title {
+  .profile__name {
     font-size: 20px;
   }
 
-  .content__subtitle {
+  .profile__about {
     font-size: 15px;
   }
 

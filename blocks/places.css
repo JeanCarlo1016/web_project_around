@@ -48,6 +48,14 @@
   cursor: pointer;
 }
 
+.places__button_like:hover {
+  opacity: 0.5;
+}
+
+.places__button:checked {
+  background-color: black;
+}
+
 
 .button__image {
   width: 100%;

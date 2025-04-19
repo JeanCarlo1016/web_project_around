@@ -13,17 +13,17 @@
 
 <body class="body">
   <div class="page">
-    <div class="popup open__popup">
+    <div class="popup popup_opened">
       <button class="popup popup__button-cancel">+
       </button>
-      <form action="" class="form__container">
-        <fieldset class="form__content">
-          <h1 class="form__content form__title">Editar perfil</h1>
-          <input class="form__content form__name" type="text" placeholder="Nombre" name="name" required>
-          <input class="form__content form__about" type="text" placeholder="Acerca de mí" name="about" required>
+      <form action="" class="popup__container">
+        <fieldset class="popup__content">
+          <h1 class="popup__content popup__title">Editar perfil</h1>
+          <input class="popup__content popup__name" type="text" placeholder="Nombre" name="name" required>
+          <input class="popup__content popup__about" type="text" placeholder="Acerca de mí" name="about" required>
         </fieldset>
-        <fieldset class="form__content">
-          <button type="submit" class="form__popup form__button-save">Guardar</button>
+        <fieldset class="popup__content">
+          <button type="submit" class="popup__popup popup__button-save">Guardar</button>
         </fieldset>
       </form>
     </div>
@@ -36,9 +36,9 @@
           <img class="profile__content profile__image" src="./images/personPhoto.png"
             alt="Imagen de persona dueña de la pagina">
           <div class="profile__content profile__content-info">
-            <p class="content__info content__title">Jacques Cousteau</p>
+            <p class="content__info profile__name">Jacques Cousteau</p>
             <button class="content__info content__edit_button"></button>
-            <p class="content__info content__subtitle">Explorador</p>
+            <p class="content__info profile__about">Explorador</p>
           </div>
           <button class="profile__content profile__content-button-add"> +</button>
         </div>
@@ -57,8 +57,8 @@
           <img class="places__image" src="./images/placesImage2.png" alt="Paisaje 2">
           <div class="places__content">
             <p class="places__text">Lago Louise</p>
-            <button class="places__button">
-              <img class="places__button button__image" src="./images/likeButton.png" alt="Boton de Like">
+            <button class="places__button places__button_like">
+              <img class="button__image_like" src="./images/likeButton.png" alt="Boton de Like">
             </button>
           </div>
         </div>
@@ -66,8 +66,8 @@
           <img class="places__image" src="./images/placesImage3.png" alt="Paisaje 3">
           <div class="places__content">
             <p class="places__text">Montañas Calvas</p>
-            <button class="places__button">
-              <img class="places__button button__image" src="./images/likeButton.png" alt="Boton de Like">
+            <button class="places__button places__button_like">
+              <img class="button__image_like" src="./images/likeButton.png" alt="Boton de Like">
             </button>
           </div>
         </div>
@@ -75,8 +75,8 @@
           <img class="places__image" src="./images/placesImage4.png" alt="Paisaje 4">
           <div class="places__content">
             <p class="places__text">Latemar</p>
-            <button class="places__button">
-              <img class="places__button button__image" src="./images/likeButton.png" alt="Boton de Like">
+            <button class="places__button places__button_like">
+              <img class="button__image_like" src="./images/likeButton.png" alt="Boton de Like">
             </button>
           </div>
         </div>
@@ -84,8 +84,8 @@
           <img class="places__image" src="./images/placesImage5.png" alt="Paisaje 5">
           <div class="places__content">
             <p class="places__text">Vanois National Mountain</p>
-            <button class="places__button">
-              <img class="places__button button__image" src="./images/likeButton.png" alt="Boton de Like">
+            <button class="places__button places__button_like">
+              <img class="button__image_like" src="./images/likeButton.png" alt="Boton de Like">
             </button>
           </div>
         </div>
@@ -93,8 +93,8 @@
           <img class="places__image" src="./images/placesImage6.png" alt="Paisaje 6">
           <div class="places__content">
             <p class="places__text">Lago di Braies</p>
-            <button class="places__button">
-              <img class="places__button button__image" src="./images/likeButton.png" alt="Boton de Like">
+            <button class="places__button places__button_like">
+              <img class="button__image_like" src="./images/likeButton.png" alt="Boton de Like">
             </button>
           </div>
         </div>
@@ -104,6 +104,7 @@
       <p>@ 2025 Around The U.S.</p>
     </footer>
   </div>
+  <script src="./scripts/index.js"></script>
 </body>
 
 </html>
