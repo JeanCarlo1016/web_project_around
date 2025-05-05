@@ -13,24 +13,26 @@
 
 <body class="body">
   <div class="page">
-    <div class="popup popup_opened">
-      <button class="popup popup__button-cancel">+
-      </button>
-      <form class="popup__container">
-        <fieldset class="popup__content">
-          <h1 class="popup__content popup__title">Editar perfil</h1>
-          <input class="popup__content popup__name" type="text" placeholder="Nombre" name="name" required>
-          <input class="popup__content popup__about" type="text" placeholder="Acerca de mí" name="about" required>
-        </fieldset>
-        <fieldset class="popup__content">
-          <button type="submit" class="popup__popup popup__button-save">Guardar</button>
-        </fieldset>
-      </form>
-    </div>
     <header class="header">
       <img class="header__logo" src="./images/homeLogo.png" alt="Logo de la Pagina">
     </header>
     <main class="content">
+      <section id="popup_profile">
+        <div class="popup popup_opened">
+          <button class="popup popup__button-cancel">+
+          </button>
+          <form class="popup__container">
+            <fieldset class="popup__content">
+              <h1 class="popup__content popup__title">Editar perfil</h1>
+              <input class="popup__content popup__name" type="text" placeholder="Nombre" name="name" required>
+              <input class="popup__content popup__about" type="text" placeholder="Acerca de mí" name="about" required>
+            </fieldset>
+            <fieldset class="popup__content">
+              <button type="submit" class="popup__popup popup__button-save">Guardar</button>
+            </fieldset>
+          </form>
+        </div>
+      </section>
       <section class="profile">
         <div class="profile__content">
           <img class="profile__content profile__image" src="./images/personPhoto.png"
@@ -43,59 +45,45 @@
           <button class="profile__content profile__content-button-add"> +</button>
         </div>
       </section>
-      <section class="places">
-        <div class="places__card">
-          <img class="places__image" src="./images/placesImage1.jpg" alt="Paisaje 1">
-          <div class="places__content">
-            <p class="places__text">Valle de Yosemite</p>
-            <button class="places__button places__button_like">
-              <img src="./images/likeButton.png" alt="Boton de Like">
+      <section class="places" id="cards__zone">
+        <template id="places__template">
+          <div class="places__card">
+            <button class="places__button places__button_trash">
+              <img src="./images/trash.png" alt="papelera para eliminar imagen">
             </button>
+            <img class="places__image">
+            <div class="places__content">
+              <p class="places__text"></p>
+              <button class="places__button places__button_like">
+                <img src="./images/likeButton.png" alt="Boton de Like">
+              </button>
+            </div>
           </div>
+        </template>
+      </section>
+      <section id="popup__card_create">
+        <div class="popup__card popup__opened_card">
+          <button class="popup__card popup__button_cancel_card">+
+          </button>
+          <form class="popup__card popup__container_card">
+            <fieldset class="popup__content_card">
+              <h1 class="popup__content popup__title_card">Nuevo lugar</h1>
+              <input class="popup__content popup__name_card" type="text" placeholder="Titulo" name="name" required>
+              <input class="popup__content popup__link_card" type="text" placeholder="Enlace a la imagen" name="about"
+                required>
+            </fieldset>
+            <fieldset class="popup__content">
+              <button type="submit" class="popup__card popup__card_button_save_card">Crear</button>
+            </fieldset>
+          </form>
         </div>
-        <div class="places__card">
-          <img class="places__image" src="./images/placesImage2.png" alt="Paisaje 2">
-          <div class="places__content">
-            <p class="places__text">Lago Louise</p>
-            <button class="places__button places__button_like">
-              <img src="./images/likeButton.png" alt="Boton de Like">
-            </button>
-          </div>
-        </div>
-        <div class="places__card">
-          <img class="places__image" src="./images/placesImage3.png" alt="Paisaje 3">
-          <div class="places__content">
-            <p class="places__text">Montañas Calvas</p>
-            <button class="places__button places__button_like">
-              <img src="./images/likeButton.png" alt="Boton de Like">
-            </button>
-          </div>
-        </div>
-        <div class="places__card">
-          <img class="places__image" src="./images/placesImage4.png" alt="Paisaje 4">
-          <div class="places__content">
-            <p class="places__text">Latemar</p>
-            <button class="places__button places__button_like">
-              <img src="./images/likeButton.png" alt="Boton de Like">
-            </button>
-          </div>
-        </div>
-        <div class="places__card">
-          <img class="places__image" src="./images/placesImage5.png" alt="Paisaje 5">
-          <div class="places__content">
-            <p class="places__text">Vanois National Mountain</p>
-            <button class="places__button places__button_like">
-              <img src="./images/likeButton.png" alt="Boton de Like">
-            </button>
-          </div>
-        </div>
-        <div class="places__card">
-          <img class="places__image" src="./images/placesImage6.png" alt="Paisaje 6">
-          <div class="places__content">
-            <p class="places__text">Lago di Braies</p>
-            <button class="places__button places__button_like">
-              <img src="./images/likeButton.png" alt="Boton de Like">
-            </button>
+      </section>
+      <section id="popup__image_preview">
+        <div class="popup__image">
+          <div class="popup__content_img">
+            <button class="popup__image-button-close"></button>
+            <img class="popup__image_link">
+            <p class="popup__image_text"></p>
           </div>
         </div>
       </section>

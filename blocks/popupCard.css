@@ -1,0 +1,118 @@
+.popup__opened_card {
+  display: none;
+  width: 880px;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  align-content: center;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup__button_cancel_card {
+  position: absolute;
+  font-size: 70px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  right: 180px;
+  top: 130px;
+  transform: rotate(45deg);
+}
+
+.popup__button_cancel_card:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.popup__container_card {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  margin: auto;
+  width: 430px;
+  height: 330px;
+  background-color: white;
+  color: black;
+  border-radius: 4%;
+}
+
+.popup__content_card {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  margin: 34px;
+  font-family: "Inter-Regular";
+  font-size: 14px;
+  color: #000000;
+}
+
+.popup__title_card {
+  margin: 0;
+  font-size: 24px;
+  font-family: "Inter-Black";
+  color: black;
+}
+
+.popup__name_card {
+  border-bottom: solid;
+  border-width: thin;
+  margin: 44px 0 30px;
+  height: 28px;
+}
+
+.popup__link_card {
+  border-bottom: solid;
+  border-width: thin;
+  margin: 0;
+  height: 28px;
+}
+
+.popup__card_button_save_card {
+  background-color: rgb(0, 0, 0);
+  height: 50px;
+  color: white;
+  border: none;
+  border-radius: 2px;
+}
+
+.popup__card_button_save_card:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+  .popup__button_cancel_card {
+    right: 180px;
+    top: 90px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+
+  .popup__button_cancel_card {
+    right: 285px;
+    top: 105px;
+    font-size: 50px;
+  }
+
+  .popup__container_card {
+    position: static;
+    width: 282px;
+    height: 322px;
+    margin: auto;
+  }
+
+  .popup__content_card {
+    justify-content: center;
+  }
+
+  .popup__title_card {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  .popup__button-save_card {
+    width: 100%;
+  }
+}
