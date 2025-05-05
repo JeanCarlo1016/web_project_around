@@ -7,6 +7,7 @@ const buttonCloseCard = document.querySelector(".popup__button_cancel_card");
 const titleCard = document.querySelector('.popup__name_card');
 const linkCard = document.querySelector('.popup__link_card');
 const formElementCard = document.querySelector('.popup__container_card');
+const likeButton = document.querySelector('.places__button_like');
 //Elementos del popup Imagen
 const popupImage = document.querySelector('.popup__image');
 const popupImgTag = popupImage.querySelector('.popup__image_link');
@@ -48,6 +49,11 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
   }
 ];
+
+function giveLike() {
+  console.log(likeButton);
+  likeButton.classList.add('places__button_like-active');
+}
 
 //funciones del popup Image
 
@@ -122,7 +128,7 @@ addCards();
 buttonAddCard.addEventListener("click", openPopupCard);
 buttonCloseCard.addEventListener('click', closePopupCard);
 formElementCard.addEventListener('submit', handleSubmitCardForm);
-
+likeButton.addEventListener('click', giveLike);
 
 //Funciones del Profile
 function openPopupProfile() {

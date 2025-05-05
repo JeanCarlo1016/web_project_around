@@ -22,8 +22,15 @@
   right: 10px;
 }
 
-.places__button:hover {
+.places__button_like:hover {
   opacity: 0.5;
+}
+
+.places__button {
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  padding: 0;
+  border: none;
 }
 
 .places__image {
@@ -40,25 +47,28 @@
 
 .places__text {
   font-size: 24px;
+  max-width: 230px;
   font-family: "Inter-Black";
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
 
-.places__button {
+.places__button_like {
+  height: 19px;
+  align-self: center;
+  cursor: pointer;
+  background: url(../images/likeButton.png);
+  background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0);
   color: #fff;
   padding: 0;
   border: none;
 }
 
-.places__button_like {
-  height: 19px;
-  align-self: center;
-  cursor: pointer;
+.places__button_like-active {
+  background: url(../images/likeButtonBlack.png);
 }
-
 
 
 .button__image {
