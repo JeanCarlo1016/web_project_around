@@ -52,8 +52,9 @@ const initialCards = [
 
 function giveLike() {
   console.log(likeButton);
-  likeButton.classList.add('places__button_like-active');
+  //likeButton.classList.add('places__button_like-active');
 }
+
 
 //funciones del popup Image
 
@@ -128,7 +129,6 @@ addCards();
 buttonAddCard.addEventListener("click", openPopupCard);
 buttonCloseCard.addEventListener('click', closePopupCard);
 formElementCard.addEventListener('submit', handleSubmitCardForm);
-likeButton.addEventListener('click', giveLike);
 
 //Funciones del Profile
 function openPopupProfile() {
@@ -151,5 +151,4 @@ function saveChangeProfile(e) {
   openPopupProfile();
   closePopupProfile();
 }
-
 formElementProfile.addEventListener("submit", saveChangeProfile);
