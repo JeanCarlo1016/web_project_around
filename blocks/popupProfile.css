@@ -42,7 +42,8 @@
   border: none;
   display: flex;
   flex-direction: column;
-  margin: 34px;
+  margin: 20px;
+  gap: 10px;
   font-family: "Inter-Regular";
   font-size: 14px;
   color: #000000;
@@ -55,16 +56,15 @@
   color: black;
 }
 
+
 .popup__name {
-  border-bottom: solid;
-  border-width: thin;
-  margin: 44px 0 30px;
+  border-bottom: solid red;
+  margin: 22px 0 0;
   height: 28px;
 }
 
 .popup__about {
   border-bottom: solid;
-  border-width: thin;
   margin: 0;
   height: 28px;
 }

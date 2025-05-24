@@ -1,3 +1,4 @@
+
 //Elementos del popup cards
 const placesZone = document.querySelector('#cards__zone');
 const placesContainer = document.querySelector('.places__card');
@@ -22,6 +23,17 @@ let profileName = document.querySelector(".profile__name");
 let profileAbout = document.querySelector(".profile__about");
 let nameInput = document.querySelector(".popup__name");
 let aboutInput = document.querySelector(".popup__about");
+
+import { enableValidation } from "./validate.js";
+
+enableValidation({
+  formSelector: "#form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button-save",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "input-error",
+  errorClass: "error-visible"
+});
 
 const initialCards = [
   {
@@ -96,8 +108,30 @@ function createCard(cardData) {
   cardImage.addEventListener('click', () => {
     openPopupImage(cardData.name, cardData.link);
   });
+
+
   return newCard;
 }
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closePopupImage();
+    closePopupCard();
+    closePopupProfile();
+  } else if (e.key === 'Enter') {
+    saveChangeProfile();
+    createCard();
+  }
+});
+
+document.addEventListener('click', (e) => {
+  const closeClass = e.target.classList;
+  if (closeClass.contains('popup_opened') || closeClass.display === 'block') {
+    closePopupImage();
+    closePopupCard();
+    closePopupProfile();
+  }
+});
 
 function handlePopupCardClose() {
   closePopupCard();
@@ -129,6 +163,8 @@ addCards();
 buttonAddCard.addEventListener("click", openPopupCard);
 buttonCloseCard.addEventListener('click', closePopupCard);
 formElementCard.addEventListener('submit', handleSubmitCardForm);
+
+//Funciones especiales al dar ESCAPE o CLICK en otro lado de los forms o cards
 
 //Funciones del Profile
 function openPopupProfile() {

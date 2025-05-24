@@ -21,14 +21,19 @@
         <div class="popup popup_opened">
           <button class="popup popup__button-cancel">+
           </button>
-          <form class="popup__container">
+          <form id="form" class="popup__container">
             <fieldset class="popup__content">
               <h1 class="popup__content popup__title">Editar perfil</h1>
-              <input class="popup__content popup__name" type="text" placeholder="Nombre" name="name" required>
-              <input class="popup__content popup__about" type="text" placeholder="Acerca de mí" name="about" required>
+              <label for="name"></label>
+              <input class="popup__input popup__name" type="text" placeholder="Nombre" id="name" minlength="2"
+                maxlength="40" required>
+              <span id="name-error" class="error"></span>
+              <label for="about"></label>
+              <input class="popup__input popup__about" type="text" placeholder="Acerca de mí" id="about" required>
+              <span id="about-error" class="error"></span>
             </fieldset>
             <fieldset class="popup__content">
-              <button type="submit" class="popup__popup popup__button-save">Guardar</button>
+              <button type="submit" class="popup__button-save">Guardar</button>
             </fieldset>
           </form>
         </div>
@@ -65,15 +70,20 @@
         <div class="popup__card popup__opened_card">
           <button class="popup__card popup__button_cancel_card">+
           </button>
-          <form class="popup__card popup__container_card">
+          <form id="form" class="popup__card popup__container_card">
             <fieldset class="popup__content_card">
               <h1 class="popup__content popup__title_card">Nuevo lugar</h1>
-              <input class="popup__content popup__name_card" type="text" placeholder="Titulo" name="name" required>
-              <input class="popup__content popup__link_card" type="text" placeholder="Enlace a la imagen" name="about"
+              <label for="card"></label>
+              <input id="card" class="popup__input popup__name_card" type="text" placeholder="Titulo" minlength="2"
+                maxlength="30" required>
+              <span id="card-error" class="error"></span>
+              <label for="link"></label>
+              <input id="link" class="popup__input popup__link_card" type="url" placeholder="Enlace a la imagen"
                 required>
+              <span id="link-error" class="error"></span>
             </fieldset>
             <fieldset class="popup__content">
-              <button type="submit" class="popup__card popup__card_button_save_card">Crear</button>
+              <button type="submit" class="popup__card popup__button-save">Crear</button>
             </fieldset>
           </form>
         </div>
@@ -92,7 +102,7 @@
       <p>@ 2025 Around The U.S.</p>
     </footer>
   </div>
-  <script src="./scripts/index.js"></script>
+  <script type="module" src="./scripts/index.js"></script>
 </body>
 
 </html>
