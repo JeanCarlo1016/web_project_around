@@ -1,41 +1,57 @@
-.popup_opened {
+.popup__profile {
   display: none;
-  width: 880px;
-  height: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
   position: fixed;
-  align-content: center;
-  z-index: 1;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.popup__button-cancel {
-  position: absolute;
-  font-size: 70px;
-  border: none;
-  background-color: rgba(0, 0, 0, 0);
-  color: white;
-  right: 180px;
-  top: 130px;
-  transform: rotate(45deg);
+.popup_opened {
+  display: flex;
 }
 
-.popup__button-cancel:hover {
-  color: rgba(255, 255, 255, 0.6);
-}
-
+/* Aquí el popup centrado y relativo para el botón */
 .popup__container {
-  position: absolute;
-  top: 25%;
-  left: 25%;
-  margin: auto;
   width: 430px;
-  height: 330px;
+  height: 300px;
   background-color: white;
   color: black;
   border-radius: 4%;
+  position: relative;
+  /* ¡Muy importante! */
+  padding: 20px;
+}
+
+/* Botón de cerrar posicionado absolutamente relativo al contenedor */
+.popup__button-cancel {
+  position: absolute;
+  right: 680px;
+  top: 250px;
+  font-size: 60px;
+  border: none;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  line-height: 1;
+  text-align: center;
+  border-radius: 50%;
+
+  /* Saco el botón un poco afuera con transform */
+  transform: translate(50%, -50%);
+  transition: color 0.3s ease;
+  user-select: none;
+}
+
+.popup__button-cancel:hover {
+  color: gray;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .popup__content {
@@ -83,8 +99,8 @@
 
 @media screen and (min-width: 768px) and (max-width: 1280px) {
   .popup__button-cancel {
-    right: 180px;
-    top: 90px;
+    right: 280px;
+    top: 190px;
   }
 }
 

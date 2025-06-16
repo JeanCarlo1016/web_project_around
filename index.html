@@ -17,20 +17,19 @@
       <img class="header__logo" src="./images/homeLogo.png" alt="Logo de la Pagina">
     </header>
     <main class="content">
-      <section id="popup_profile">
-        <div class="popup popup_opened">
-          <button class="popup popup__button-cancel">+
-          </button>
+      <section id="popup_content_profile">
+        <div class="popup__profile">
+          <button class="popup__button-cancel" aria-label="Cerrar popup perfil">&times;</button>
           <form id="form" class="popup__container">
             <fieldset class="popup__content">
-              <h1 class="popup__content popup__title">Editar perfil</h1>
+              <h1 class="popup__title">Editar perfil</h1>
               <label for="name"></label>
               <input class="popup__input popup__name" type="text" placeholder="Nombre" id="name" minlength="2"
-                maxlength="40" required>
+                maxlength="40" required />
               <span id="name-error" class="error"></span>
               <label for="about"></label>
               <input class="popup__input popup__about" type="text" placeholder="Acerca de mí" id="about" minlength="2"
-                maxlength="200" required>
+                maxlength="200" required />
               <span id="about-error" class="error"></span>
             </fieldset>
             <fieldset class="popup__content">

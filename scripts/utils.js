@@ -28,9 +28,24 @@ function openPopupImages(name, link) {
     console.warn("No se encontraron los elementos para mostrar la imagen.");
   }
 }
+
 closeBtn.addEventListener('click', function () {
   popupImage.classList.remove('popup_opened_preview');
 });
+
+document.addEventListener("keydown", function (evt) {
+  if (evt.key === "Escape") {
+    if (popupImage.classList.contains("popup_opened_preview")) {
+      popupImage.classList.remove("popup_opened_preview");
+    }
+  }
+});
+
+// document.addEventListener('click', (e) => {
+//   if (popupImage.classList.contains("popup_opened_preview")) {
+//     popupImage.classList.remove("popup_opened_preview");
+//   }
+// });
 
 export {
   likeCard,
