@@ -1,3 +1,11 @@
+class FormValidator {
+  constructor(selectorClass, elementToValidate) {
+    this._selectorClass = selectorClass;
+    this.elementToVa = elementToValidate;
+  }
+}
+
+
 const showError = (input, config) => {
   const inputElement = document.querySelector(`#${input.id}-error`);
   inputElement.textContent = input.validationMessage;

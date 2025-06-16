@@ -1,34 +1,43 @@
 .popup__image {
   display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Cuando está visible */
-.popup__image .popup_opened {
-  display: block;
-  position: relative;
-  width: 500px;
-  height: 540px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  align-content: center;
-  z-index: 1;
-  background-color: rgba(0, 0, 0, 0.5);
+.popup_opened_preview {
+  display: flex;
 }
+
+
+.popup__content_img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+}
+
+
 
 /* Contenido centrado */
-.popup__content_img {
+/* .popup__content_img {
   color: white;
   text-align: left;
   display: flex;
   position: relative;
   flex-direction: column;
-}
+} */
 
 .popup__image_link {
-  max-width: 50%;
-  max-height: 50%;
-  margin: 0 auto;
+  max-width: 500px;
+  max-height: 500px;
 }
 
 .popup__image_text {
@@ -38,18 +47,19 @@
   color: #ffffff;
   line-height: 100%;
   max-width: 291px;
-  position: absolute;
-  bottom: -20px;
-  left: 250px;
+  margin-top: 10px;
+  position: static;
+  /* En lugar de absolute */
 }
 
 .popup__image-button-close {
   background-image: url(../images/closeButton.png);
-  position: absolute;
+  position: relative;
   width: 40px;
   height: 40px;
   background-repeat: no-repeat;
-  right: 130px;
+  right: -275px;
+  top: 25px;
   border: none;
   background-color: transparent;
 }
@@ -60,8 +70,13 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1280px) {
+  .popup__image_link {
+    max-width: 400px;
+    max-height: 400px;
+  }
+
   .popup__image-button-close {
-    right: 180px;
+    right: -240px;
     top: 50px;
   }
 }
@@ -69,9 +84,8 @@
 @media screen and (min-width: 320px) and (max-width: 768px) {
 
   .popup__image-button-close {
-    right: 285px;
-    top: 90px;
-    font-size: 50px;
+    right: -180px;
+    top: 25px;
   }
 
   .popup__image_link {

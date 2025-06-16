@@ -8,12 +8,12 @@ const buttonCloseCard = document.querySelector(".popup__button_cancel_card");
 const titleCard = document.querySelector('.popup__name_card');
 const linkCard = document.querySelector('.popup__link_card');
 const formElementCard = document.querySelector('.popup__container_card');
-const likeButton = document.querySelector('.places__button_like');
+
 //Elementos del popup Imagen
 const popupImage = document.querySelector('.popup__image');
 const popupImgTag = popupImage.querySelector('.popup__image_link');
 const popupText = popupImage.querySelector('.popup__image_text');
-const closeBtn = popupImage.querySelector('.popup__image-button-close');
+
 //Elementos del popup perfil
 const buttonEdit = document.querySelector(".content__info_edit_button");
 const popupProfile = document.querySelector(".popup");
@@ -23,8 +23,10 @@ let profileName = document.querySelector(".profile__name");
 let profileAbout = document.querySelector(".profile__about");
 let nameInput = document.querySelector(".popup__name");
 let aboutInput = document.querySelector(".popup__about");
-
-import { enableValidation } from "./validate.js";
+const template = "#places__template";
+import { enableValidation } from "./formValidator.js";
+import { likeCard, deleteCard, openPopupImages } from "./utils.js";
+import { Card } from "./card.js";
 
 enableValidation({
   formSelector: "#form",
@@ -62,27 +64,10 @@ const initialCards = [
   }
 ];
 
-function giveLike() {
-  console.log(likeButton);
-  //likeButton.classList.add('places__button_like-active');
-}
 
 
-//funciones del popup Image
 
-function openPopupImage(name, link) {
-  popupImgTag.src = link;
-  popupImgTag.alt = name;
-  popupText.textContent = name;
-  popupImage.classList.add('popup_opened');
-  popupImage.style = "display:block";
-}
 
-function closePopupImage() {
-  popupImage.classList.remove('popup_opened');
-  popupImage.style = "display:none";
-}
-closeBtn.addEventListener('click', closePopupImage);
 
 //Funciones de las cards
 function openPopupCard() {
@@ -93,40 +78,22 @@ function closePopupCard() {
 }
 
 function createCard(cardData) {
-  const template = document.querySelector("#places__template").content;
-  const newCard = template.querySelector('.places__card').cloneNode(true);
-
-  const cardTitle = newCard.querySelector('.places__text');
-  const cardImage = newCard.querySelector('.places__image');
-  const deleteButton = newCard.querySelector('.places__button_trash');
-
-  cardTitle.textContent = cardData.name;
-  cardImage.src = cardData.link;
-  cardImage.alt = cardData.name;
-  deleteButton.addEventListener('click', () => (newCard.remove()));
-
-  cardImage.addEventListener('click', () => {
-    openPopupImage(cardData.name, cardData.link);
-  });
-
-
-  return newCard;
+  const newCard = new Card(cardData, template);
+  const cardElement = newCard.renderCard();
+  placesZone.prepend(cardElement);
 }
-
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
-    closePopupImage();
+    //tooglePopupImages(cardData.name, cardData.link);
     closePopupCard();
     closePopupProfile();
-  } else if (e.key === 'Enter') {
-    saveChangeProfile();
-    createCard();
   }
 });
 
+
 document.addEventListener('click', (e) => {
   const closeClass = e.target.classList;
-  if (closeClass.contains('popup_opened') || closeClass.display === 'block') {
+  if (closeClass.contains('popup_opened_preview') || closeClass.display === 'flex') {
     closePopupImage();
     closePopupCard();
     closePopupProfile();
@@ -139,7 +106,8 @@ function handlePopupCardClose() {
 
 function addCards() {
   initialCards.forEach((cardData) => {
-    const card = createCard(cardData);
+    const newCard = new Card(cardData, template);
+    const card = newCard.renderCard();
     placesZone.appendChild(card);
     closePopupCard();
   });
@@ -149,12 +117,8 @@ function handleSubmitCardForm(e) {
   e.preventDefault();
   const name = titleCard.value;
   const link = linkCard.value;
-  const cardElement = {
-    name,
-    link
-  }
-  const card = createCard(cardElement);
-  placesZone.prepend(card);
+  const cardData = { name, link };
+  createCard(cardData); // Ya se inserta adentro
   closePopupCard();
 }
 
