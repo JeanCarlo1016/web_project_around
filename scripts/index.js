@@ -72,10 +72,10 @@ function closePopupCard() {
 function openPopupProfile() {
   nameInput.value = profileName.textContent;
   aboutInput.value = profileAbout.textContent;
-  popupProfile.classList.add('popup_opened');
+  popupProfile.style.display = "block";
 }
 function closePopupProfile() {
-  popupProfile.classList.remove('popup_opened');
+  popupProfile.style.display = "none";
 }
 
 // Cerrar popup cards al hacer clic fuera del contenido

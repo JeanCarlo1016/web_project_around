@@ -1,53 +1,37 @@
 .popup__profile {
   display: none;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
+  width: 880px;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   position: fixed;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
+  align-content: center;
+  z-index: 1;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.popup_opened {
-  display: flex;
+.popup__button-cancel {
+  position: absolute;
+  font-size: 70px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  right: 180px;
+  top: 130px;
 }
 
-/* Aquí el popup centrado y relativo para el botón */
 .popup__container {
+  position: absolute;
+  top: 25%;
+  left: 25%;
   width: 430px;
-  height: 300px;
+  height: 330px;
   background-color: white;
   color: black;
   border-radius: 4%;
-  position: relative;
-  /* ¡Muy importante! */
-  padding: 20px;
 }
 
-/* Botón de cerrar posicionado absolutamente relativo al contenedor */
-.popup__button-cancel {
-  position: absolute;
-  right: 680px;
-  top: 250px;
-  font-size: 60px;
-  border: none;
-  background-color: transparent;
-  color: white;
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  line-height: 1;
-  text-align: center;
-  border-radius: 50%;
-
-  /* Saco el botón un poco afuera con transform */
-  transform: translate(50%, -50%);
-  transition: color 0.3s ease;
-  user-select: none;
-}
 
 .popup__button-cancel:hover {
   color: gray;
@@ -99,36 +83,51 @@
 
 @media screen and (min-width: 768px) and (max-width: 1280px) {
   .popup__button-cancel {
-    right: 280px;
-    top: 190px;
+    top: 150px;
+    right: 180px;
+    font-size: 40px;
+  }
+
+  .popup__container {
+    width: 380px;
+    height: auto;
+    padding: 18px;
+  }
+
+  .popup__title {
+    font-size: 22px;
   }
 }
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
 
+
   .popup__button-cancel {
-    right: 285px;
-    top: 105px;
-    font-size: 50px;
+    top: 210px;
+    right: 270px;
+    font-size: 40px;
   }
 
   .popup__container {
     position: static;
     width: 282px;
-    height: 322px;
+    height: 270px;
     margin: auto;
   }
 
   .popup__content {
-    justify-content: center;
+    margin: 12px;
+    gap: 8px;
   }
 
   .popup__title {
     font-size: 18px;
+    text-align: center;
     margin-top: 10px;
   }
 
   .popup__button-save {
     width: 100%;
+    height: 45px;
   }
 }
