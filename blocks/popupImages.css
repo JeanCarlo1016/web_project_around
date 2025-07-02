@@ -11,7 +11,7 @@
   align-items: center;
 }
 
-.popup_opened_preview {
+.active {
   display: flex;
 }
 
@@ -24,16 +24,6 @@
   position: absolute;
 }
 
-
-
-/* Contenido centrado */
-/* .popup__content_img {
-  color: white;
-  text-align: left;
-  display: flex;
-  position: relative;
-  flex-direction: column;
-} */
 
 .popup__image_link {
   max-width: 500px;

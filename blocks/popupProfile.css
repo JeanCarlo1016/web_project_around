@@ -11,6 +11,10 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.active {
+  display: block;
+}
+
 .popup__button-cancel {
   position: absolute;
   font-size: 70px;
@@ -31,7 +35,6 @@
   color: black;
   border-radius: 4%;
 }
-
 
 .popup__button-cancel:hover {
   color: gray;

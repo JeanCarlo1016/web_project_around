@@ -1,4 +1,4 @@
-.popup__opened_card {
+.popup__card {
   display: none;
   width: 880px;
   height: 100%;
@@ -9,6 +9,10 @@
   align-content: center;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.active {
+  display: block;
 }
 
 .popup__button_cancel_card {

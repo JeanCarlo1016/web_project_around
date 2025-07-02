@@ -1,5 +1,5 @@
 //Variables del popupImage
-const popupImage = document.querySelector('#popup__image_preview');
+const popupImage = document.querySelector('.popup__image');
 const cardTitle = popupImage.querySelector('.popup__image_text');
 const cardImage = popupImage.querySelector('.popup__image_link');
 const closeBtn = popupImage.querySelector('.popup__image-button-close');
@@ -18,7 +18,7 @@ function deleteCard(cardToDelete) {
 
 function openPopupImages(name, link) {
 
-  popupImage.classList.add('popup_opened_preview');
+  popupImage.classList.add('active');
 
   if (cardTitle && cardImage) {
     cardTitle.textContent = name;
@@ -30,13 +30,13 @@ function openPopupImages(name, link) {
 }
 
 closeBtn.addEventListener('click', function () {
-  popupImage.classList.remove('popup_opened_preview');
+  popupImage.classList.remove('active');
 });
 
 document.addEventListener("keydown", function (evt) {
   if (evt.key === "Escape") {
-    if (popupImage.classList.contains("popup_opened_preview")) {
-      popupImage.classList.remove("popup_opened_preview");
+    if (popupImage.classList.contains("active")) {
+      popupImage.classList.remove("active");
     }
   }
 });

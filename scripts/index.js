@@ -1,15 +1,16 @@
 // Elementos del popup cards
-const placesZone = document.querySelector('#cards__zone');
-const popupCard = document.querySelector('.popup__opened_card');
+const cardsZone = document.querySelector('#cards__zone');
+const popupCard = document.querySelector('.popup__card');
 const buttonAddCard = document.querySelector('.profile__content-button-add');
 const buttonCloseCard = document.querySelector(".popup__button_cancel_card");
 const titleCard = document.querySelector('.popup__name_card');
 const linkCard = document.querySelector('.popup__link_card');
 const formElementCard = document.querySelector('.popup__container_card');
+const popupSelector = document.getElementById('popup__profile');
 
 // Elementos del popup perfil
 const buttonEdit = document.querySelector(".content__info_edit_button");
-const popupProfile = document.querySelector(".popup__profile");
+const editProfile = document.querySelector(".popup__profile");
 const buttonClose = document.querySelector(".popup__button-cancel");
 const formElementProfile = document.querySelector(".popup__container");
 let profileName = document.querySelector(".profile__name");
@@ -19,6 +20,8 @@ let aboutInput = document.querySelector(".popup__about");
 const template = "#places__template";
 import { Card } from "./card.js";
 import { FormValidator } from "./formValidator.js";
+import { Section } from "./section.js";
+import { Popup } from "./popup.js";
 
 const validationSettings = {
   inputSelector: '.popup__input',
@@ -62,20 +65,22 @@ const initialCards = [
 
 // Funciones para abrir y cerrar popup cards
 function openPopupCard() {
-  popupCard.style.display = "block";
+  popupCard.classList.add('active');
+  //popupCard.style.display = "block";
 }
 function closePopupCard() {
-  popupCard.style.display = "none";
+  popupCard.classList.remove('active');
+  //popupCard.style.display = "none";
 }
 
 // Funciones para abrir y cerrar popup perfil
 function openPopupProfile() {
   nameInput.value = profileName.textContent;
   aboutInput.value = profileAbout.textContent;
-  popupProfile.style.display = "block";
+  editProfile.style.display = "block";
 }
 function closePopupProfile() {
-  popupProfile.style.display = "none";
+  editProfile.style.display = "none";
 }
 
 // Cerrar popup cards al hacer clic fuera del contenido
@@ -86,8 +91,8 @@ popupCard.addEventListener('click', (e) => {
 });
 
 // Cerrar popup perfil al hacer clic fuera del contenido
-popupProfile.addEventListener('click', (e) => {
-  if (e.target === popupProfile) {
+editProfile.addEventListener('click', (e) => {
+  if (e.target === editProfile) {
     closePopupProfile();
   }
 });
@@ -96,73 +101,89 @@ popupProfile.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' || e.key === 'Esc') {
     // Cerrar popup card si está abierto
-    if (popupCard.style.display === "block") {
+    if (popupCard.classList.contains('active')) {
       closePopupCard();
     }
     // Cerrar popup perfil si está abierto
-    if (popupProfile.classList.contains('popup_opened')) {
+    if (editProfile.classList.contains('active')) {
       closePopupProfile();
     }
     // Cerrar popup preview si está abierto
-    if (popupImagePreview.classList.contains('popup_opened_preview')) {
-      popupImagePreview.classList.remove('popup_opened_preview');
+    if (popupImagePreview.classList.contains('active')) {
+      popupImagePreview.classList.remove('active');
     }
   }
 });
 
 // --- Popup preview ---
 
-const popupImagePreview = document.getElementById('popup__image_preview');
+const popupImagePreview = document.querySelector('.popup__image');
 
 popupImagePreview.addEventListener('click', (e) => {
   // Cerrar si clic fuera del contenido (suponiendo contenido dentro .popup__content_img)
   if (e.target === popupImagePreview) {
-    popupImagePreview.classList.remove('popup_opened_preview');
+    popupImagePreview.classList.remove('active');
   }
 });
 
-// Puedes agregar también un botón para cerrar el preview si tienes uno:
 const btnClosePreview = popupImagePreview.querySelector('.popup__image-button-close');
 if (btnClosePreview) {
   btnClosePreview.addEventListener('click', () => {
-    popupImagePreview.classList.remove('popup_opened_preview');
+    popupImagePreview.classList.remove('active');
   });
 }
 
 // Crear y agregar cards
-function createCard(cardData) {
-  const newCard = new Card(cardData, template);
+// function createCard(cardData) {
+//   const newCard = new Card(cardData, template);
+//   const cardElement = newCard.renderCard();
+//   cardsZone.prepend(cardElement);
+//   return cardElement;
+// }
+const handleRenderer = (item) => {
+  const newCard = new Card(item, template);
   const cardElement = newCard.renderCard();
-  placesZone.prepend(cardElement);
+  cardsZone.prepend(cardElement);
+  section.additem(cardElement);
 }
 
-function addCards() {
-  initialCards.forEach((cardData) => {
-    const newCard = new Card(cardData, template);
-    const card = newCard.renderCard();
-    placesZone.appendChild(card);
-    closePopupCard();
-  });
-}
+const section = new Section(initialCards, (item) => handleRenderer(item), cardsZone);
+
+section.createLayout();
+
+// function addCards() {
+//   initialCards.forEach((cardData) => {
+//     const newCard = new Card(cardData, template);
+//     const card = newCard.renderCard();
+//     cardsZone.appendChild(card);
+//     closePopupCard();
+//   });
+// }
+
+
 
 function handleSubmitCardForm(e) {
   e.preventDefault();
   const name = titleCard.value;
   const link = linkCard.value;
   const cardData = { name, link };
-  createCard(cardData);
+  handleRenderer(cardData);
   closePopupCard();
 }
 
-addCards();
+//Popup de Perfil
+const popupProfile = new Popup(popupSelector);
+console.log(popupProfile);
+
+
 
 // Event listeners para botones y formularios
 buttonAddCard.addEventListener("click", openPopupCard);
 buttonCloseCard.addEventListener('click', closePopupCard);
 formElementCard.addEventListener('submit', handleSubmitCardForm);
 
-buttonEdit.addEventListener("click", openPopupProfile);
-buttonClose.addEventListener("click", closePopupProfile);
+buttonEdit.addEventListener("click", popupProfile._open);
+buttonClose.addEventListener("click", popupProfile._close);
 
 function saveChangeProfile(e) {
   e.preventDefault();
