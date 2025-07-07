@@ -2,7 +2,7 @@
 const popupImage = document.querySelector('.popup__image');
 const cardTitle = popupImage.querySelector('.popup__image_text');
 const cardImage = popupImage.querySelector('.popup__image_link');
-const closeBtn = popupImage.querySelector('.popup__image-button-close');
+const closeBtn = popupImage.querySelector('.popup__close');
 
 function likeCard(heart) {
   if (heart.classList.contains('places__button_like-active')) {

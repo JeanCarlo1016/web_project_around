@@ -3,11 +3,11 @@ import { likeCard, deleteCard, openPopupImages } from "./utils.js";
 // 1. Crear las clases
 
 export class Card {
-  constructor(cardData, templateSelector, openImage) {
+  constructor(cardData, templateSelector, handleCardClick) {
     this._name = cardData.name;
     this._link = cardData.link;
     this._templateSelector = templateSelector;
-    this._openImage = openImage;
+    this._popupImage = handleCardClick;
   }
 
   _getTemplate() {
@@ -24,7 +24,15 @@ export class Card {
   _setEventListeners() {
     this._likeBtn.addEventListener("click", () => likeCard(this._likeBtn));
     this._deleteBtn.addEventListener("click", () => deleteCard(this._element));
-    this._imageEl.addEventListener("click", () => openPopupImages(this._name, this._link));
+    this._imageEl.addEventListener("click", () => this._handleCardClick());
+  }
+
+  _handleCardClick() {
+    this._element
+      .querySelector(".places__image")
+      .addEventListener("click", () => {
+        this._popupImage.open(this._link, this._name);
+      });
   }
 
   renderCard() {

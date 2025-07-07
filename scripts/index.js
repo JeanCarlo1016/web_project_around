@@ -1,18 +1,18 @@
 // Elementos del popup cards
 const cardsZone = document.querySelector('#cards__zone');
-const popupCard = document.querySelector('.popup__card');
 const buttonAddCard = document.querySelector('.profile__content-button-add');
 const buttonCloseCard = document.querySelector(".popup__button_cancel_card");
 const titleCard = document.querySelector('.popup__name_card');
 const linkCard = document.querySelector('.popup__link_card');
-const formElementCard = document.querySelector('.popup__container_card');
-const popupSelector = document.getElementById('popup__profile');
-
+const formCard = document.querySelector('.popup__container_card');
+const popup = document.querySelector("#popupImage");
+const popimg = popup.querySelector(".popup__image_link");
+const poptxt = popimg.querySelector(".popup__image_text");
 // Elementos del popup perfil
 const buttonEdit = document.querySelector(".content__info_edit_button");
 const editProfile = document.querySelector(".popup__profile");
-const buttonClose = document.querySelector(".popup__button-cancel");
-const formElementProfile = document.querySelector(".popup__container");
+const buttonCloseProfile = document.querySelector(".popup__button-cancel");
+const formProfile = document.querySelector(".popup__container");
 let profileName = document.querySelector(".profile__name");
 let profileAbout = document.querySelector(".profile__about");
 let nameInput = document.querySelector(".popup__name");
@@ -21,7 +21,9 @@ const template = "#places__template";
 import { Card } from "./card.js";
 import { FormValidator } from "./formValidator.js";
 import { Section } from "./section.js";
-import { Popup } from "./popup.js";
+import Popup from "./popup.js";
+import PopupWithForm from "./popupWithForm.js";
+import PopupWithImage from "./popupWithImage.js";
 
 const validationSettings = {
   inputSelector: '.popup__input',
@@ -64,74 +66,61 @@ const initialCards = [
 ];
 
 // Funciones para abrir y cerrar popup cards
-function openPopupCard() {
-  popupCard.classList.add('active');
-  //popupCard.style.display = "block";
-}
-function closePopupCard() {
-  popupCard.classList.remove('active');
-  //popupCard.style.display = "none";
-}
+// function openPopupCard() {
+//   popupCard.classList.add('active');
+//   //popupCard.style.display = "block";
+// }
+// function closePopupCard() {
+//   popupCard.classList.remove('active');
+//   //popupCard.style.display = "none";
+// }
 
-// Funciones para abrir y cerrar popup perfil
-function openPopupProfile() {
-  nameInput.value = profileName.textContent;
-  aboutInput.value = profileAbout.textContent;
-  editProfile.style.display = "block";
-}
-function closePopupProfile() {
-  editProfile.style.display = "none";
-}
+// // Funciones para abrir y cerrar popup perfil
+// function openPopupProfile() {
+//   nameInput.value = profileName.textContent;
+//   aboutInput.value = profileAbout.textContent;
+//   editProfile.style.display = "block";
+// }
+// function closePopupProfile() {
+//   editProfile.style.display = "none";
+// }
 
 // Cerrar popup cards al hacer clic fuera del contenido
-popupCard.addEventListener('click', (e) => {
-  if (e.target === popupCard) {
-    closePopupCard();
-  }
-});
+// popupCard.addEventListener('click', (e) => {
+//   if (e.target === popupCard) {
+//     closePopupCard();
+//   }
+// });
 
-// Cerrar popup perfil al hacer clic fuera del contenido
+// // Cerrar popup perfil al hacer clic fuera del contenido
 editProfile.addEventListener('click', (e) => {
   if (e.target === editProfile) {
-    closePopupProfile();
+    popupProfile.close();
   }
 });
 
 
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' || e.key === 'Esc') {
-    // Cerrar popup card si está abierto
-    if (popupCard.classList.contains('active')) {
-      closePopupCard();
-    }
-    // Cerrar popup perfil si está abierto
-    if (editProfile.classList.contains('active')) {
-      closePopupProfile();
-    }
-    // Cerrar popup preview si está abierto
-    if (popupImagePreview.classList.contains('active')) {
-      popupImagePreview.classList.remove('active');
-    }
-  }
-});
+// document.addEventListener('keydown', (e) => {
+//   if (e.key === 'Escape' || e.key === 'Esc') {
+//     // Cerrar popup card si está abierto
+//     if (popupCard.classList.contains('active')) {
+//       closePopupCard();
+//     }
+//     // Cerrar popup perfil si está abierto
+//     if (editProfile.classList.contains('active')) {
+//       closePopupProfile();
+//     }
+//     // Cerrar popup preview si está abierto
+//     if (popupImagePreview.classList.contains('active')) {
+//       popupImagePreview.classList.remove('active');
+//     }
+//   }
+// });
 
 // --- Popup preview ---
 
-const popupImagePreview = document.querySelector('.popup__image');
+//const popupImagePreview = document.querySelector('.popup__image');
 
-popupImagePreview.addEventListener('click', (e) => {
-  // Cerrar si clic fuera del contenido (suponiendo contenido dentro .popup__content_img)
-  if (e.target === popupImagePreview) {
-    popupImagePreview.classList.remove('active');
-  }
-});
-
-const btnClosePreview = popupImagePreview.querySelector('.popup__image-button-close');
-if (btnClosePreview) {
-  btnClosePreview.addEventListener('click', () => {
-    popupImagePreview.classList.remove('active');
-  });
-}
 
 // Crear y agregar cards
 // function createCard(cardData) {
@@ -140,8 +129,11 @@ if (btnClosePreview) {
 //   cardsZone.prepend(cardElement);
 //   return cardElement;
 // }
+const popupImage = new PopupWithImage('.popup__image');
+popupImage.setEventListeners();
+
 const handleRenderer = (item) => {
-  const newCard = new Card(item, template);
+  const newCard = new Card(item, template, popupImage);
   const cardElement = newCard.renderCard();
   cardsZone.prepend(cardElement);
   section.additem(cardElement);
@@ -162,34 +154,33 @@ section.createLayout();
 
 
 
-function handleSubmitCardForm(e) {
-  e.preventDefault();
-  const name = titleCard.value;
-  const link = linkCard.value;
+function handleSubmitCardForm(values) {
+  const name = values.card;
+  const link = values.link;
   const cardData = { name, link };
   handleRenderer(cardData);
-  closePopupCard();
+  popupCard.close();
 }
 
-//Popup de Perfil
-const popupProfile = new Popup(popupSelector);
-console.log(popupProfile);
+function saveChangeProfile(values) {
+  profileName.textContent = values.name;
+  profileAbout.textContent = values.about;
+  popupProfile.close();
+}
+//Popup perfil
+const popupProfile = new PopupWithForm(".popup__profile", saveChangeProfile);
+popupProfile.setEventListeners();
 
+buttonEdit.addEventListener("click", () => popupProfile.open());
+buttonCloseProfile.addEventListener("click", () => popupProfile.close());
 
+//Popup crear card
+const popupCard = new PopupWithForm('.popup__card', handleSubmitCardForm);
+popupCard.setEventListeners();
 
 // Event listeners para botones y formularios
-buttonAddCard.addEventListener("click", openPopupCard);
-buttonCloseCard.addEventListener('click', closePopupCard);
-formElementCard.addEventListener('submit', handleSubmitCardForm);
+buttonAddCard.addEventListener("click", () => popupCard.open());
+buttonCloseCard.addEventListener('click', () => popupCard.close());
+//formCard.addEventListener('submit', handleSubmitCardForm);
 
-buttonEdit.addEventListener("click", popupProfile._open);
-buttonClose.addEventListener("click", popupProfile._close);
 
-function saveChangeProfile(e) {
-  e.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileAbout.textContent = aboutInput.value;
-  closePopupProfile();
-}
-
-formElementProfile.addEventListener("submit", saveChangeProfile);

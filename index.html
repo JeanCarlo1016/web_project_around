@@ -18,9 +18,9 @@
     </header>
     <main class="content">
       <section id="popup_content_profile">
-        <div class="popup__profile" id="popup__profile">
-          <button class="popup__button-cancel" aria-label="Cerrar popup perfil">&times;</button>
-          <form id="form" class="popup__container">
+        <div class="popup popup__profile">
+          <button class="popup__button-cancel popup__close" aria-label="Cerrar popup perfil">&times;</button>
+          <form id="formProfile" class="popup__container">
             <fieldset class="popup__content">
               <h1 class="popup__title">Editar perfil</h1>
               <label for="name"></label>
@@ -66,10 +66,10 @@
         </template>
       </section>
       <section id="popup__card_create">
-        <div class="popup__card" id="popup">
-          <button class="popup__button_cancel_card">+
+        <div class="popup popup__card" id="popup">
+          <button class="popup__button_cancel_card popup__close">+
           </button>
-          <form id="form" class="popup__container_card">
+          <form id="formCard" class="popup__container_card">
             <fieldset class="popup__content_card">
               <h1 class="popup__content popup__title_card">Nuevo lugar</h1>
               <label for="card"></label>
@@ -88,9 +88,9 @@
         </div>
       </section>
       <section class="popup__preview">
-        <div class="popup__image" id="popup">
+        <div class="popup popup__image" id="popupImage">
           <div class="popup__content_img">
-            <button class="popup__image-button-close"></button>
+            <button class="popup__image-button-close popup__close"></button>
             <img class="popup__image_link">
             <p class="popup__image_text"></p>
           </div>
