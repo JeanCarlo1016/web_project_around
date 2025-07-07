@@ -18,7 +18,7 @@
     </header>
     <main class="content">
       <section id="popup_content_profile">
-        <div class="popup popup__profile">
+        <div class="popup__profile popup">
           <button class="popup__button-cancel popup__close" aria-label="Cerrar popup perfil">&times;</button>
           <form id="formProfile" class="popup__container">
             <fieldset class="popup__content">
@@ -66,19 +66,18 @@
         </template>
       </section>
       <section id="popup__card_create">
-        <div class="popup popup__card" id="popup">
-          <button class="popup__button_cancel_card popup__close">+
+        <div class="popup__card popup" id="popup">
+          <button class="popup__card_cancel_card popup__close">+
           </button>
-          <form id="formCard" class="popup__container_card">
-            <fieldset class="popup__content_card">
-              <h1 class="popup__content popup__title_card">Nuevo lugar</h1>
+          <form id="formCard" class="popup__container">
+            <fieldset class="popup__content">
+              <h1 class="popup__content popup__title">Nuevo lugar</h1>
               <label for="card"></label>
-              <input id="card" class="popup__input popup__name_card" type="text" placeholder="Titulo" minlength="2"
+              <input id="card" class="popup__input popup__name" type="text" placeholder="Titulo" minlength="2"
                 maxlength="30" required>
               <span id="card-error" class="error"></span>
               <label for="link"></label>
-              <input id="link" class="popup__input popup__link_card" type="url" placeholder="Enlace a la imagen"
-                required>
+              <input id="link" class="popup__input popup__link" type="url" placeholder="Enlace a la imagen" required>
               <span id="link-error" class="error"></span>
             </fieldset>
             <fieldset class="popup__content">
@@ -88,11 +87,11 @@
         </div>
       </section>
       <section class="popup__preview">
-        <div class="popup popup__image" id="popupImage">
-          <div class="popup__content_img">
+        <div class="popup__image popup" id="popupImage">
+          <div class="popup__image popup__image_content">
             <button class="popup__image-button-close popup__close"></button>
-            <img class="popup__image_link">
-            <p class="popup__image_text"></p>
+            <img class="popup__image_content popup__image_link">
+            <p class="popup__image_content popup__image_text"></p>
           </div>
         </div>
       </section>

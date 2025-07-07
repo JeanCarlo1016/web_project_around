@@ -16,7 +16,7 @@
 }
 
 
-.popup__content_img {
+.popup__image_content {
   display: flex;
   flex-direction: column;
   align-items: center;
