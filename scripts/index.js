@@ -1,10 +1,10 @@
 // Elementos del popup cards
 const cardsZone = document.querySelector('#cards__zone');
 const buttonAddCard = document.querySelector('.profile__content-button-add');
-const buttonCloseCard = document.querySelector(".popup__card_cancel");
+const buttonCloseCard = document.querySelector(".popup__close-button");
 const popup = document.querySelector("#popupImage");
-const popimg = popup.querySelector(".popup__image_link");
-const poptxt = popimg.querySelector(".popup__image_text");
+const popimg = popup.querySelector(".popup__preview-image");
+//const poptxt = popimg.querySelector(".popup__preview-caption");
 // Elementos del popup perfil
 const buttonEdit = document.querySelector(".content__info_edit_button");
 const editProfile = document.querySelector(".popup__profile");
