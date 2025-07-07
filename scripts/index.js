@@ -1,7 +1,7 @@
 // Elementos del popup cards
 const cardsZone = document.querySelector('#cards__zone');
 const buttonAddCard = document.querySelector('.profile__content-button-add');
-const buttonCloseCard = document.querySelector(".popup__button_cancel_card");
+const buttonCloseCard = document.querySelector(".popup__card_cancel");
 const popup = document.querySelector("#popupImage");
 const popimg = popup.querySelector(".popup__image_link");
 const poptxt = popimg.querySelector(".popup__image_text");
