@@ -9,8 +9,8 @@ const popimg = popup.querySelector(".popup__preview-image");
 const buttonEdit = document.querySelector(".content__info_edit_button");
 const editProfile = document.querySelector(".popup__profile");
 const buttonCloseProfile = document.querySelector(".popup__button-cancel");
-let profileName = document.querySelector(".profile__name");
-let profileAbout = document.querySelector(".profile__about");
+const profileName = document.querySelector(".profile__name");
+const profileAbout = document.querySelector(".profile__about");
 
 const template = "#places__template";
 import { Card } from "./card.js";
@@ -18,6 +18,9 @@ import { FormValidator } from "./formValidator.js";
 import { Section } from "./section.js";
 import PopupWithForm from "./popupWithForm.js";
 import PopupWithImage from "./popupWithImage.js";
+import { api } from "./api.js";
+import ProfileInfo from "./profileInfo.js";
+
 
 const validationSettings = {
   inputSelector: '.popup__input',
@@ -32,33 +35,33 @@ forms.forEach((form) => {
   validator.enableValidation();
 });
 
-const initialCards = [
-  {
-    name: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg"
-  },
-  {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg"
-  },
-  {
-    name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg"
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg"
-  },
-  {
-    name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg"
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
-  }
-];
+const profileInfo = new ProfileInfo({
+  nameSelector: '.profile__name',
+  aboutSelector: '.profile__about',
+  imageSelector: '.profile__image'
+});
 
+api.getProfileInfo().then((data) => {
+  profileInfo.setProfileInfo({
+    name: data.name,
+    about: data.about,
+    image: data.avatar
+  })
+})
+
+function saveChangeProfile(values) {
+  api.editProfileInfo({
+    name: values.name,
+    about: values.about,
+  }).then(() => {
+    profileInfo.setProfileInfo(values);
+  })
+  popupProfile.close();
+}
+
+//Popup perfil
+const popupProfile = new PopupWithForm(".popup__profile", saveChangeProfile);
+popupProfile.setEventListeners();
 
 // // Cerrar popup perfil al hacer clic fuera del contenido
 editProfile.addEventListener('click', (e) => {
@@ -68,41 +71,54 @@ editProfile.addEventListener('click', (e) => {
 });
 
 
+api.getInitialCards().then((cards) => {
+
+  const section = new Section(cards, (item) => {
+    const newCard = new Card(item, template, popupImage);
+    const cardElement = newCard.renderCard();
+    //cardsZone.prepend(cardElement);
+    section.additem(cardElement);
+  }, cardsZone);
+
+  section.createLayout();
+})
 
 const popupImage = new PopupWithImage('.popup__image');
 popupImage.setEventListeners();
 
-const handleRenderer = (item) => {
-  const newCard = new Card(item, template, popupImage);
-  const cardElement = newCard.renderCard();
-  cardsZone.prepend(cardElement);
-  section.additem(cardElement);
-}
-
-const section = new Section(initialCards, (item) => handleRenderer(item), cardsZone);
-
-section.createLayout();
-
-
-
+// const handleRenderer = (item) => {
+//   const newCard = new Card(item, template, popupImage);
+//   const cardElement = newCard.renderCard();
+//   cardsZone.prepend(cardElement);
+//   section.additem(cardElement);
+// }
 
 
 function handleSubmitCardForm(values) {
-  const name = values.card;
-  const link = values.link;
-  const cardData = { name, link };
-  handleRenderer(cardData);
+  console.log(values);
+  api.addCards({
+    name: values.card,
+    link: values.link,
+  }).then(() => {
+    api.getInitialCards().then((cards) => {
+
+      const section = new Section(cards, (item) => {
+        console.log(cards);
+        const newCard = new Card(item, template, popupImage);
+        const cardElement = newCard.renderCard();
+        //cardsZone.prepend(cardElement);
+        section.additem(cardElement);
+      }, cardsZone);
+
+      section.createLayout();
+    })
+  })
   popupCard.close();
 }
 
-function saveChangeProfile(values) {
-  profileName.textContent = values.name;
-  profileAbout.textContent = values.about;
-  popupProfile.close();
-}
-//Popup perfil
-const popupProfile = new PopupWithForm(".popup__profile", saveChangeProfile);
-popupProfile.setEventListeners();
+
+
+
 
 buttonEdit.addEventListener("click", () => popupProfile.open());
 buttonCloseProfile.addEventListener("click", () => popupProfile.close());

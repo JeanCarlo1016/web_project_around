@@ -13,7 +13,13 @@
 }
 
 .profile__image {
+  margin-left: 20px;
   grid-column: 1;
+  border-radius: 50%;
+  width: 110px;
+  height: 110px;
+  background-position: center;
+  background-size: contain;
 }
 
 .profile__content-button-add {
@@ -58,6 +64,7 @@
   font-size: 40px;
   line-height: 48px;
   padding-top: 22px;
+  min-width: 380px;
 }
 
 .profile__about {
@@ -100,6 +107,7 @@
   }
 
   .profile__image {
+    margin-left: 0px;
     width: 120px;
     height: 120px;
   }
@@ -118,6 +126,7 @@
 
   .profile__name {
     font-size: 25px;
+    min-width: 200px;
   }
 
   .content__info_edit_button {
@@ -139,6 +148,7 @@
   }
 
   .profile__image {
+    margin: 0;
     width: 120px;
     height: 120px;
   }
@@ -156,6 +166,7 @@
 
   .profile__name {
     font-size: 20px;
+    min-width: 150px;
   }
 
   .profile__about {
