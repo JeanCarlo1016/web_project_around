@@ -1,0 +1,77 @@
+/* Contenedor blanco del popup de avatar */
+.popup__avatar {
+  width: 880px;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  align-content: center;
+  z-index: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Botón de cerrar */
+.popup__button-cancel {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  border: none;
+  background: transparent;
+  color: #333;
+  cursor: pointer;
+}
+
+.popup__button-cancel:hover {
+  color: #999;
+}
+
+/* Formulario y contenido */
+.popup__container {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 430px;
+  height: auto;
+  background-color: white;
+  color: black;
+  border-radius: 4%;
+}
+
+.popup__content {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  margin: 80px;
+  gap: 10px;
+  font-family: "Inter-Regular";
+  font-size: 14px;
+  color: #000000;
+}
+
+.popup__title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.popup__input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.popup__button-save {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.popup__button-save:hover {
+  background-color: #444;
+}

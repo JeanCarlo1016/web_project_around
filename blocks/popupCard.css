@@ -1,5 +1,4 @@
 .popup__card {
-  display: none;
   width: 880px;
   height: 100%;
   top: 50%;
@@ -9,10 +8,6 @@
   align-content: center;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.5);
-}
-
-.active {
-  display: block;
 }
 
 .popup__close-button {
@@ -31,14 +26,12 @@
 }
 
 .popup__container {
-  position: absolute;
-  top: 25%;
-  left: 25%;
-  width: 430px;
-  height: 330px;
   background-color: white;
-  color: black;
-  border-radius: 4%;
+  border-radius: 8px;
+  width: 430px;
+  padding: 30px 40px;
+  box-sizing: border-box;
+  position: absolute;
 }
 
 .popup__content {
@@ -53,6 +46,7 @@
 }
 
 .popup__title {
+  text-align: left;
   margin: 0;
   font-size: 24px;
   font-family: "Inter-Black";
@@ -63,7 +57,6 @@
 .popup__name {
   border-bottom: solid;
   border-width: thin;
-  margin: 20px 0 0;
   height: 28px;
 }
 
@@ -102,9 +95,10 @@
   }
 
   .popup__container {
+    padding: 15px 20px;
     position: static;
     width: 282px;
-    height: 322px;
+    height: auto;
     margin: auto;
   }
 

@@ -2,32 +2,33 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="Jean Carlo Cabrera">
-  <meta name="description" content="Around U.S.">
-  <meta name="keywords" content="Around U.S.">
-  <link rel="stylesheet" href="./pages/index.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Jean Carlo Cabrera" />
+  <meta name="description" content="Around U.S." />
+  <meta name="keywords" content="Around U.S." />
+  <link rel="stylesheet" href="./pages/index.css" />
   <title>Around</title>
 </head>
 
 <body class="body">
   <div class="page">
     <header class="header">
-      <img class="header__logo" src="./images/homeLogo.png" alt="Logo de la Pagina">
+      <img class="header__logo" src="./images/homeLogo.png" alt="Logo de la Pagina" />
     </header>
+
     <main class="content">
-      <section class="popup popup_type_profile" id="popup-profile">
-        <div class="popup popup__profile">
-          <button class="popup__button-cancel popup__close" aria-label="Cerrar popup perfil">&times;</button>
+
+      <!-- Popup Editar Perfil -->
+      <section class="popup" id="popup-profile">
+        <div class="popup__profile">
+          <button class="popup__close-button popup__close" aria-label="Cerrar popup nueva tarjeta">+</button>
           <form id="formProfile" class="popup__container">
             <fieldset class="popup__content">
               <h1 class="popup__title">Editar perfil</h1>
-              <label for="name"></label>
               <input class="popup__input popup__name" type="text" placeholder="Nombre" id="name" minlength="2"
                 maxlength="40" required />
               <span id="name-error" class="error"></span>
-              <label for="about"></label>
               <input class="popup__input popup__about" type="text" placeholder="Acerca de mí" id="about" minlength="2"
                 maxlength="200" required />
               <span id="about-error" class="error"></span>
@@ -38,45 +39,88 @@
           </form>
         </div>
       </section>
+
+      <!-- Perfil -->
       <section class="profile">
         <div class="profile__content">
-          <img class="profile__content profile__image" src="" alt="Imagen de persona dueña de la pagina">
-          <div class="profile__content profile__content-info">
+
+          <!-- Nuevo contenedor para el hover -->
+          <div class="profile__image-container" aria-label="Editar avatar">
+            <img class="profile__image" src="" alt="Imagen de perfil" />
+            <div class="profile__image-edit-icon"></div>
+          </div>
+
+          <div class="profile__content-info">
             <p class="content__info profile__name"></p>
-            <button class="content__info content__info_edit_button"></button>
+            <button class="content__info content__info_edit_button" aria-label="Editar perfil"></button>
             <p class="content__info profile__about"></p>
           </div>
-          <button class="profile__content profile__content-button-add"> +</button>
+
+          <button class="profile__content-button-add" aria-label="Agregar tarjeta">+</button>
         </div>
       </section>
+
+      <!-- Popup cambiar imagen del profile-->
+
+      <section class="popup" id="popup-avatar">
+        <div class="popup__avatar">
+          <button class="popup__close-button popup__close" aria-label="Cerrar popup nueva tarjeta">+</button>
+          <form id="formAvatar" class="popup__container">
+            <fieldset class="popup__content">
+              <h1 class="popup__title">Cambiar foto de perfil</h1>
+              <input id="avatar" class="popup__input" type="url" placeholder="Enlace a la imagen" required />
+              <span id="avatar-error" class="error"></span>
+            </fieldset>
+            <fieldset class="popup__content">
+              <button type="submit" class="popup__button-save">Guardar</button>
+            </fieldset>
+          </form>
+        </div>
+      </section>
+
+
+      <!-- Tarjetas -->
       <section class="places" id="cards__zone">
         <template id="places__template">
           <div class="places__card">
-            <button class="places__button places__button_trash">
-              <img src="./images/trash.png" alt="papelera para eliminar imagen">
+            <button class="places__button places__button_trash" aria-label="Eliminar tarjeta">
+              <img src="./images/trash.png" alt="papelera para eliminar imagen" />
             </button>
-            <img class="places__image">
+            <img class="places__image" alt="Imagen del lugar" />
             <div class="places__content">
               <p class="places__text"></p>
-              <button class="places__button_like">
-              </button>
+              <button class="places__button_like" aria-label="Dar like"></button>
             </div>
           </div>
         </template>
       </section>
-      <section id="popup__card_create">
-        <div class="popup__card popup" id="popup">
-          <button class="popup__close-button popup__close">+
-          </button>
+
+      <!-- Popup Eliminar Tarjeta -->
+      <section class="popup" id="popup-delete">
+        <div class="popup__delete">
+          <button class="popup__close-button popup__close" aria-label="Cerrar popup nueva tarjeta">+</button>
+          <form id="formDelete" class="popup__container">
+            <fieldset class="popup__content">
+              <h1 class="popup__title">¿Estás Seguro?</h1>
+            </fieldset>
+            <fieldset class="popup__content">
+              <button type="submit" class="popup__button-save">Sí</button>
+            </fieldset>
+          </form>
+        </div>
+      </section>
+
+      <!-- Popup Crear Nueva Tarjeta -->
+      <section class="popup" id="popup-add-card">
+        <div class="popup__card">
+          <button class="popup__close-button popup__close" aria-label="Cerrar popup nueva tarjeta">+</button>
           <form id="formCard" class="popup__container">
             <fieldset class="popup__content">
-              <h1 class="popup__content popup__title">Nuevo lugar</h1>
-              <label for="card"></label>
-              <input id="card" class="popup__input popup__name" type="text" placeholder="Titulo" minlength="2"
-                maxlength="30" required>
+              <h1 class="popup__title">Nuevo lugar</h1>
+              <input id="card" class="popup__input popup__name" type="text" placeholder="Título" minlength="2"
+                maxlength="30" required />
               <span id="card-error" class="error"></span>
-              <label for="link"></label>
-              <input id="link" class="popup__input popup__link" type="url" placeholder="Enlace a la imagen" required>
+              <input id="link" class="popup__input popup__link" type="url" placeholder="Enlace a la imagen" required />
               <span id="link-error" class="error"></span>
             </fieldset>
             <fieldset class="popup__content">
@@ -85,20 +129,23 @@
           </form>
         </div>
       </section>
-      <section class="popup__preview">
-        <div class="popup__image popup" id="popupImage">
-          <div class="popup__preview">
-            <button class="popup__image-button-close popup__close"></button>
-            <img class="popup__preview-image">
-            <p class="popup__preview-caption"></p>
-          </div>
+
+      <!-- Popup Vista Previa Imagen -->
+      <section class="popup" id="popupImage">
+        <div class="popup__image">
+          <button class="popup__close-button popup__close" aria-label="Cerrar popup nueva tarjeta">+</button>
+          <img class="popup__preview-image" alt="Vista previa de la imagen" />
+          <p class="popup__preview-caption"></p>
         </div>
       </section>
+
     </main>
+
     <footer class="footer">
       <p>@ 2025 Around The U.S.</p>
     </footer>
   </div>
+
   <script type="module" src="./scripts/index.js"></script>
 </body>
 

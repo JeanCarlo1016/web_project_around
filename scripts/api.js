@@ -30,12 +30,24 @@ class Api {
     return this.makeRequest('/users/me', 'PATCH', data);
   }
 
+  editProfilePhoto(data) {
+    return this.makeRequest('/users/me/avatar', 'PATCH', data);
+  }
+
   getInitialCards() {
     return this.makeRequest('/cards/', 'GET');
   }
 
   addCards(data) {
     return this.makeRequest('/cards/', 'POST', data);
+  }
+
+  toggleLike(cardId, isLiked) {
+    return this.makeRequest(`/cards/${cardId}/likes`, isLiked ? 'DELETE' : 'PUT')
+  }
+
+  deleteCard(cardId) {
+    return this.makeRequest(`/cards/${cardId}`, 'DELETE');
   }
 }
 export const api = new Api('https://around-api.es.tripleten-services.com/v1', {

@@ -1,0 +1,62 @@
+/* Contenedor blanco del contenido del popup */
+.popup__delete {
+  width: 880px;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  align-content: center;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Botón de cerrar (X o ×) */
+.popup__button-cancel {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 30px;
+  border: none;
+  background: transparent;
+  color: #333;
+  cursor: pointer;
+}
+
+.popup__button-cancel:hover {
+  color: #999;
+}
+
+/* Contenido del formulario */
+.popup__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup__content {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.popup__title {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.popup__button-save {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.popup__button-save:hover {
+  background-color: #444;
+}

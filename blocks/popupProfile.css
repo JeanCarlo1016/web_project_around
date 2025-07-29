@@ -1,5 +1,4 @@
 .popup__profile {
-  display: none;
   width: 880px;
   height: 100%;
   top: 50%;
@@ -11,18 +10,50 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.active {
+.profile__image-container {
+  position: relative;
+  width: 120px;
+  /* ajusta al tamaño de tu imagen */
+  height: 120px;
+  border-radius: 10%;
+  cursor: pointer;
+}
+
+.profile__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
+/* Ícono de edición oculto por defecto */
+.profile__image-edit-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4) url("../images/editProfile.png") center center no-repeat;
+  background-size: 30px 30px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* Mostrar el ícono al pasar el mouse */
+.profile__image-container:hover .profile__image-edit-icon {
+  opacity: 1;
+}
+
+
 .popup__button-cancel {
   position: absolute;
-  font-size: 70px;
+  top: 10px;
+  right: 15px;
+  background: none;
   border: none;
-  background-color: rgba(0, 0, 0, 0);
-  color: white;
-  right: 180px;
-  top: 130px;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 .popup__container {
@@ -30,7 +61,7 @@
   top: 25%;
   left: 25%;
   width: 430px;
-  height: 330px;
+  height: auto;
   background-color: white;
   color: black;
   border-radius: 4%;
@@ -45,7 +76,7 @@
   border: none;
   display: flex;
   flex-direction: column;
-  margin: 20px;
+  margin: 80px;
   gap: 10px;
   font-family: "Inter-Regular";
   font-size: 14px;
@@ -62,7 +93,6 @@
 
 .popup__name {
   border-bottom: solid red;
-  margin: 22px 0 0;
   height: 28px;
 }
 
@@ -73,6 +103,7 @@
 }
 
 .popup__button-save {
+  margin-top: 30px;
   background-color: rgb(0, 0, 0);
   height: 50px;
   color: white;

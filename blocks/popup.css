@@ -1,0 +1,23 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  /* Oculto por defecto */
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* fondo oscuro */
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+
+/* Mostrar al activarse */
+.popup_opened {
+  display: flex;
+  opacity: 1;
+}
